@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Perros</title>
+</head>
+<body>
+    <h1>Lista de perros:</h1>
+        <ul>
+            <% dogs.forEach( dog => { %>
+            <li>Nombre: <%=dog.nombre %> Raza: <%= dog.raza %> Edad: <%= dog.edad %> </div><br>
+                <div>
+                    <img src="<%=dog.imagen%>" alt="" width="100px"/>
+                </div>
+            </li>
+            <% }) %>
+
+        </ul>
+</body>
+</html>

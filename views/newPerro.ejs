@@ -1,0 +1,51 @@
+<h1>Agregar Perro:</h1>
+<form action="/dogs/create" method="POST" id="formulario">
+  <input type="text" placeholder="Nombre" name="nombre" id="nombre" /><br />
+  <input type="number" placeholder="edad" name="edad" id="edad" /><br />
+  <select name="raza" id="raza">
+    <% for(var i = 0; i < razas.length; i++) { %>
+    <option value="<%= razas[i] %>"><%= razas[i] %></option>
+    <% } %>
+  </select>
+
+  <button type="submit">Agregar</button>
+</form>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const userId = params.get("userId");
+  const formulario = document.getElementById("formulario");
+  const nombreField = document.getElementById("nombre");
+  const edadField = document.getElementById("edad");
+  const razaField = document.getElementById("raza");
+
+  formulario.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    console.log(userId);
+    const nombre = nombreField.value;
+    const edad = edadField.value;
+    const raza = razaField.value;
+    fetch("/dogs/create", {
+      method: "POST",
+      body: JSON.stringify({
+        nombre,
+        edad,
+        raza,
+        ...(userId && { userId }),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then(res => res.json())
+    .then(res => {
+      if(!userId)
+      {
+        window.location.href = "/dogs/list"
+      }
+      else {
+        window.location.href = "/users/list"
+      }
+    });
+  });
+</script>

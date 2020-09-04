@@ -1,0 +1,26 @@
+{
+  "name": "ejemplo_mongo",
+  "version": "1.0.0",
+  "description": "ejemplo de mongo",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.1.2",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mocha": "^5.2.0",
+    "mongoose": "^5.2.9",
+    "node-fetch": "^2.6.0",
+    "request": "^2.88.2",
+    "should": "^13.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
